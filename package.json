@@ -1,0 +1,19 @@
+{
+  "name": "hypothesisApp",
+  "version": "1.0.0",
+  "description": "Hypothesis Single Page Web App Challenge",
+  "main": "index.js",
+  "repository": {},
+  "author": "Pete <pappapete@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "btoa": "^1.1.2",
+    "express": "^4.15.2",
+    "open": "^0.0.5",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
