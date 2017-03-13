@@ -32,14 +32,13 @@ angular.module('hypothesisApp')
                 $scope.emailForm.$invalid = !isFormValid;
             };
 
-            // function is called on the key up for the to, cc, bcc inputs
-            // to check the email address string to ensure all emails are
-            // valid and unique
+            // function is called on the key up for the to, cc, bcc inputs to check
+            // the email address string to ensure all emails are valid and unique
             $scope.validateEmailString = function(model, multi) {
                 if(multi==='false') {
                     return;
                 }
-                // if input value
+                // if input value set to valid if no value is present
                 if(!$scope.email[model] || !$scope.email[model].length){
                     $scope.emailForm[model].$valid = true;
                     $scope.emailForm[model].$invalid = false;
