@@ -9,12 +9,24 @@ angular.module('hypothesisApp')
     .controller('MainCtrl', [
         '$scope',
         'Config',
-        function ($scope, Config) {
-            var config = Config.getConfig();
-            console.log(config);
+        'Utils',
+        function ($scope, Config, Utils) {
+            $scope.data = Config.windowData.form;
+            $scope.email = {};
 
+            $scope.clear = function () {
+                $scope.emailForm.$setPristine();
+                $scope.email = {};
+            };
+
+            $scope.validateEmailString = function(model, multi) {
+                if(multi==='false') {
+                    return;
+                }
+                $scope.emailForm[model].$invalid = !Utils.validateEmails($scope.email[model]);
+            };
 
             $scope.send = function () {
-                console.log('qwerty');
-            }
+                console.log($scope.email.to);
+            };
         }]);

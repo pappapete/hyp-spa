@@ -10,7 +10,7 @@ angular.module('hypothesisApp')
     .service('Config', [
         function() {
 
-            var config = {
+            this.config = {
                 paths: {
                     images:  'images/',
                     views: {
@@ -20,14 +20,6 @@ angular.module('hypothesisApp')
                 }
             };
 
-            this.getConfig = function () {
-                return config;
-            };
-
-
-            // var windowData = window.data || [];
-            // this.getData = function (data) {
-            //     return angular.copy(windowData[data]);
-            // };
+            this.windowData = window.data || [];
         }
     ]);

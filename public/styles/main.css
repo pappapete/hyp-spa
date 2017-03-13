@@ -34,6 +34,10 @@ body {
     background-size: cover;
 }
 
+.wrapper {
+    width: 100%;
+}
+
 .form-footer {
 }
 
@@ -52,10 +56,16 @@ textarea.form-control {
     background: rgba(0,0,0,.4);
     padding: 15px 20px;
     color: #fff;
-    border: 0 solid  #fff;
+    border: 1px solid transparent;
     font-size: 18px;
     height: auto;
     border-radius: 0;
+}
+
+input[type=text].ng-invalid.ng-dirty ,
+input[type=email].ng-invalid.ng-dirty ,
+textarea.form-control.ng-invalid.ng-dirty {
+    border-color: #fff;
 }
 
 .valid {
@@ -77,7 +87,15 @@ input[type=submit]:hover {
     background: rgba(0,0,0,.4);
 }
 
+input[type=submit][disabled]:hover {
+     background: rgba(0,0,0,0);
+}
+
 textarea.form-control {
       height: 150px;
       resize: none;
   }
+
+.red {
+    color: #f00;
+}
