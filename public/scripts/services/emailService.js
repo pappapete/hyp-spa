@@ -21,6 +21,8 @@ angular.module('hypothesisApp')
                 return _.uniq(a).length !== a.length;
             };
 
+            // function takes a string of emails and checks if all
+            // emails are valid and also not duplicated
             this.validateEmails = function (emailString) {
                 if(!emailString) {
                     return;

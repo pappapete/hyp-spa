@@ -21,28 +21,22 @@ var makeSendGridData = function (data) {
 };
 
 var makeMailGunData = function (data) {
-    // TODO: this needs to be fixed up
-    // TODO: also needs to be properly tested
-    // TODO: failing because other email addresses not registered
     var response = 'from=' + data.from;
     response +=  '&to=' + data.to;
-    response +=  '&subject=' + config.sendGrid.name + ': '+ data.subject;
+    response +=  '&subject=' + data.subject;
     response +=  '&text=' + data.body;
 
     if(data.cc) {
-        // response += `&cc=${data.cc}` ;
+        response += '&cc=' + data.cc;
     }
 
     if(data.bcc) {
-        // response += `&bcc=${data.bcc}` ;
+        response += '&bcc=' + data.bcc;
     }
-
-    // console.log(response);
     return response;
 };
 
 var sendEmail = function (type, params) {
-    // console.log(xhr.readyState, xhr.status, xhr.responseText);
     var url = (type === config.mailGun.name) ? config.mailGun.url : config.sendGrid.url;
     var auth = (type === config.mailGun.name) ? config.mailGun.auth : config.sendGrid.auth;
     var contentType = (type === config.mailGun.name) ? config.mailGun.contentType : config.sendGrid.contentType;
