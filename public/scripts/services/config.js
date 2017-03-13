@@ -17,7 +17,8 @@ angular.module('hypothesisApp')
                         partials: 'views/partials/',
                         root: 'views/'
                     }
-                }
+                },
+                emailUrl: 'http://localhost:3000/email'
             };
 
             this.windowData = window.data || [];

@@ -17,6 +17,7 @@ angular.module('hypothesisApp')
                         typeInput: (attr.dirFormItem) === 'input',
                         inputType: attr.dirFormItemType,
                         multiEmail: attr.dirFormItemMultiEmail,
+                        isRequired: attr.dirFormItemRequired,
                         model: attr.dirFormItemModel,
                         label: attr.dirFormItemLabel,
                         placeholder: attr.dirFormItemPlaceholder,

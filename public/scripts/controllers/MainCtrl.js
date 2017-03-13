@@ -9,11 +9,13 @@ angular.module('hypothesisApp')
     .controller('MainCtrl', [
         '$scope',
         'Config',
-        'Utils',
-        function ($scope, Config, Utils) {
+        'EmailService',
+        function ($scope, Config, EmailService) {
             $scope.data = Config.windowData.form;
 
-            $scope.email = {};
+            $scope.email = {
+
+            };
 
             $scope.clear = function () {
                 $scope.emailForm.$setPristine();
@@ -25,10 +27,18 @@ angular.module('hypothesisApp')
                 if(multi==='false') {
                     return;
                 }
-                $scope.emailForm[model].$invalid = !Utils.validateEmails($scope.email[model]);
+                $scope.emailForm[model].$invalid = !EmailService.validateEmails($scope.email[model]);
             };
 
             $scope.send = function () {
                 console.log($scope.email);
+
+                EmailService.sendEmail($scope.email).then(function(res) {
+                    console.log(res);
+                }, function(error) {
+                    console.log(error);
+
+                });
+
             };
         }]);

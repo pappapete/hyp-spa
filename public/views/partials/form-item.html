@@ -8,12 +8,12 @@
            ng-model="email[item.model]"
            ng-keyup="validateEmailString(item.model, item.multiEmail)"
            placeholder="{{ item.placeholder }}"
-           required>
+           ng-required="{{ item.isRequired }}">
     <textarea ng-if="!item.typeInput"
-              ame="{{ item.model }}"
+              name="{{ item.model }}"
               class="form-control"
-              ng-model="email[model]"
+              ng-model="email[item.model]"
               placeholder="{{ item.placeholder }}"
-              required></textarea>
+              ng-required="{{ item.isRequired }}"></textarea>
 </div>
 
