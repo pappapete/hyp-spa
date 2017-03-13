@@ -10,7 +10,8 @@ angular.module('hypothesisApp')
         '$scope',
         'Config',
         'EmailService',
-        function ($scope, Config, EmailService) {
+        'toastr',
+        function ($scope, Config, EmailService, toastr) {
             $scope.data = Config.windowData.form;
 
             $scope.email = {
@@ -31,12 +32,12 @@ angular.module('hypothesisApp')
             };
 
             $scope.send = function () {
-                console.log($scope.email);
-
                 EmailService.sendEmail($scope.email).then(function(res) {
                     console.log(res);
+                    toastr.success(res.data, 'Email Success!');
                 }, function(error) {
                     console.log(error);
+                    toastr.error('Email not sent', 'Sorry there was an error');
 
                 });
 

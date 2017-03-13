@@ -7,7 +7,8 @@
  */
 angular
     .module('hypothesisApp', [
-        'ngRoute'
+        'ngRoute',
+        'toastr'
     ])
     .config([
         '$routeProvider',
