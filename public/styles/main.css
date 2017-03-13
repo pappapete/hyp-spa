@@ -20,22 +20,16 @@ html, body {
 
 .container {
     height: 100%;
-    overflow: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 
 body {
-    background-image: url('../images/bg.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
+    background: transparent url('../images/bg.jpg') no-repeat fixed center;
     background-size: cover;
 }
 
 .wrapper {
     width: 100%;
+    margin: 40px 0;
 }
 
 .form-footer {
@@ -44,10 +38,6 @@ body {
 .main-logo {
     height: 63px;
     margin: 17px 0 0 15px;
-}
-
-label {
-
 }
 
 input[type=text],
@@ -99,3 +89,29 @@ textarea.form-control {
 .red {
     color: #f00;
 }
+
+@media screen and (max-width: 630px) {
+    .main-logo {
+        display: none;
+    }
+    input[type=submit] {
+        width: 150px;
+        margin: 20px 10px 0;
+    }
+    .form-footer {
+        width: 340px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    input[type=submit] {
+        width: 120px;
+        margin: 20px 10px 0;
+        font-size: 16px;
+    }
+    .form-footer {
+        width: 290px;
+    }
+}
+
