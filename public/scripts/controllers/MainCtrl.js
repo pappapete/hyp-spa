@@ -16,10 +16,20 @@ angular.module('hypothesisApp')
 
             $scope.email = {};
 
+
+
             $scope.clear = function () {
                 $scope.emailForm.$setPristine();
                 $scope.email = {};
                 $scope.email.from = '';
+            };
+
+            var checkValidation = function () {
+                var isFormValid =  $scope.emailForm.to.$valid && $scope.emailForm.from.$valid &&
+                    $scope.emailForm.cc.$valid && $scope.emailForm.bcc.$valid &&
+                    $scope.emailForm.subject.$valid && $scope.emailForm.body.$valid;
+                $scope.emailForm.$valid = isFormValid;
+                $scope.emailForm.$invalid = !isFormValid;
             };
 
             // function is called on the key up for the to, cc, bcc inputs
@@ -31,13 +41,15 @@ angular.module('hypothesisApp')
                 }
                 // if input value
                 if(!$scope.email[model] || !$scope.email[model].length){
+                    $scope.emailForm[model].$valid = true;
                     $scope.emailForm[model].$invalid = false;
-                    $scope.emailForm.$invalid = false;
+                    checkValidation();
                     return;
                 }
                 // if the email address string is invalid, update validation for the modal and the form
-                $scope.emailForm[model].$invalid = !EmailService.validateEmails($scope.email[model]);
-                $scope.emailForm.$invalid = !EmailService.validateEmails($scope.email[model]);
+                $scope.emailForm[model].$valid = !!(EmailService.validateEmails($scope.email[model]));
+                $scope.emailForm[model].$invalid = !(EmailService.validateEmails($scope.email[model]));
+                checkValidation();
             };
 
             $scope.send = function () {
