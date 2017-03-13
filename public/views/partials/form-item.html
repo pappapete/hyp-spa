@@ -1,10 +1,19 @@
 <div class="form-group col-md-{{ item.width }}">
-    <label ng-class="{'red' : emailForm[item.model].$invalid && emailForm[item.model].$dirty}">{{ item.label }}</label>
-    <input ng-if="item.typeInput" name="{{ item.model }}" type="{{ item.inputType }}"
-           class="form-control" ng-model="email[item.model]"
+    <label ng-class="{'red' : emailForm[item.model].$invalid &&
+            emailForm[item.model].$dirty}">{{ item.label }}</label>
+    <input ng-if="item.typeInput"
+           name="{{ item.model }}"
+           type="{{ item.inputType }}"
+           class="form-control"
+           ng-model="email[item.model]"
            ng-keyup="validateEmailString(item.model, item.multiEmail)"
-           placeholder="{{ item.placeholder }}" required>
-    <textarea ng-if="!item.typeInput" name="{{ item.model }}" class="form-control"
-              ng-model="email[model]" placeholder="{{ item.placeholder }}" required></textarea>
+           placeholder="{{ item.placeholder }}"
+           required>
+    <textarea ng-if="!item.typeInput"
+              ame="{{ item.model }}"
+              class="form-control"
+              ng-model="email[model]"
+              placeholder="{{ item.placeholder }}"
+              required></textarea>
 </div>
 

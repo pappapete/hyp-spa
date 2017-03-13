@@ -12,11 +12,13 @@ angular.module('hypothesisApp')
         'Utils',
         function ($scope, Config, Utils) {
             $scope.data = Config.windowData.form;
+
             $scope.email = {};
 
             $scope.clear = function () {
                 $scope.emailForm.$setPristine();
                 $scope.email = {};
+                $scope.email.from = '';
             };
 
             $scope.validateEmailString = function(model, multi) {
@@ -27,6 +29,6 @@ angular.module('hypothesisApp')
             };
 
             $scope.send = function () {
-                console.log($scope.email.to);
+                console.log($scope.email);
             };
         }]);
