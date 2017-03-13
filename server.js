@@ -15,29 +15,31 @@ app.use(bodyParser.json());
 
 app.post('/email', function (req, res) {
 
-    var emailMailGun = function(data) {
-        var params = email.makeMailGunData(data);
-        email.sendEmail(config.mailGun.name, params)
-            .then( function(response) {
-                res.send(response)
-            })
-            .catch(function() {
-                emailSendGrid(data)
-            });
-    };
-
     var emailSendGrid = function(data) {
         var params = email.makeSendGridData(data);
         email.sendEmail(config.sendGrid.name, params)
             .then(function( response) {
                 res.send(response)
             })
-            .catch(function (error) {
-                res.status(400).send(error)
+            .catch(function () {
+                emailMailGun(data)
             });
     };
 
-    emailMailGun(req.body);
+    var emailMailGun = function(data) {
+        var params = email.makeMailGunData(data);
+        email.sendEmail(config.mailGun.name, params)
+            .then( function(response) {
+                res.send(response)
+            })
+            .catch(function(error) {
+                res.status(400).send(error);
+            });
+    };
+
+
+
+    emailSendGrid(req.body);
 });
 
 app.listen(PORT, function() {
