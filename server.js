@@ -14,8 +14,11 @@ app.use(bodyParser.json());
 
 app.post('/email', function (req, res) {
 
-    // this function sends the email via SendGrid, but
-    // if this fails then it is send via MailGun
+    /**
+     *  Function: emailSendGrid
+     *  The function sends the email via SendGrid, but
+     * if this fails then it is send via MailGun
+     */
     var emailSendGrid = function(data) {
         var params = email.makeSendGridData(data);
         email.sendEmail(config.sendGrid.name, params)
@@ -29,8 +32,11 @@ app.post('/email', function (req, res) {
             });
     };
 
-    // this function sends the email via MailGun
-    // if this fails then an error is returned
+    /**
+     *  Function: emailSendGrid
+     *  The function sends the email via MailGun, but
+     * if this fails then an error is returned
+     */
     var emailMailGun = function(data) {
         var params = email.makeMailGunData(data);
         email.sendEmail(config.mailGun.name, params)

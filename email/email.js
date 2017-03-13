@@ -2,6 +2,10 @@ var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 var config = require('../config/emailConfig').config;
 
+/**
+ *  Function: makeSendGridData
+ *  The function builds the SendGrid data
+ */
 var makeSendGridData = function (data) {
     var response = {
         personalizations:[{ to:[ { email: data.to } ] }],
@@ -20,6 +24,10 @@ var makeSendGridData = function (data) {
     return JSON.stringify(response);
 };
 
+/**
+ *  Function: makeMailGunData
+ *  The function builds the MailGun data
+ */
 var makeMailGunData = function (data) {
     var response = 'from=' + data.from;
     response +=  '&to=' + data.to;
@@ -36,6 +44,11 @@ var makeMailGunData = function (data) {
     return response;
 };
 
+/**
+ *  Function: sendEmail
+ *  The function returns a promise from the result of
+ *  sending the email via a http post request
+ */
 var sendEmail = function (type, params) {
     var url = (type === config.mailGun.name) ? config.mailGun.url : config.sendGrid.url;
     var auth = (type === config.mailGun.name) ? config.mailGun.auth : config.sendGrid.auth;
